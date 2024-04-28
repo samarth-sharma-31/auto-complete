@@ -2,10 +2,129 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
 
-.App {
+html {
+  font-size: 90%;
+  font-family:'Open Sans';
+}
+
+body {
+  background-image: url("images/app-background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.app-container {
+  height: 100vh;
   font-family: sans-serif;
   text-align: center;
   font-family: "Open Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.page-heading {
+  margin-top: 10%;
+  font-size: 2rem;
+  margin-bottom: 5%;
+}
+
+.auto-complete-container {
+  position: relative;
+}
+
+.cross-icon {
+  cursor: pointer;
+}
+
+.search-icon, .cross-icon {
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  color: lightgray !important;
+  fill: lightgray !important;
+}
+
+.search-icon svg {
+  color: lightgray !important;
+  fill: lightgray !important;
+}
+
+.spinner {
+  border: 3px solid lightgrey;
+  border-top-color: royalblue;
+  animation: spin 0.5s linear infinite;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  position: absolute;
+  right: 12px;
+  top: 10px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.country-item-wrapper {
+  display: flex;
+  padding: 0.75rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search-item-popover-container {
+  background: white;
+  max-height: 500px;
+  overflow-y: scroll;
+  border-radius: 4px;
+}
+
+.flag-container {
+  height: 32px;
+  width: 32px;
+  position: relative;
+  margin-right: 5%;
+}
+
+.flag-image {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.selected-country {
+  margin-top: 2%;
+}
+
+.no-results-found {
+  padding: 0.5rem;
+}
+
+.auto-complete-input:focus {
+  outline: none !important;
+  border:1px solid #0278d5 !important;
+}
+
+.country-item-wrapper-hover:hover {
+  background-color: #fafbfc;
+}
+
+.country-item-wrapper-selected {
+  background-color: #cdf4fe;
+}
+
+.highlight-text {
+  font-weight: 700;
 }
