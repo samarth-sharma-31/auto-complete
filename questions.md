@@ -158,6 +158,23 @@ Answer -
 
 Answer - 
 
+Lets take the following example of setState Usage - 
+
+ this.setState(
+    (prevState) => {
+      return {
+        counter: prevState.counter + 1
+      };
+    },
+    () => console.log("counter value", this.state.counter)
+  );
+
+  It takes in two args
+    1. Value to be updated or a callback function which receives the previous value as arg and returns the value to be updated
+    2. Second arg which is optional is a callback function which gets called when the state update is done.
+
+    The setState is async in nature because it allows react to schedule/queue multiple state updates and then batch them for better user experience and performance optimization
+
 
 
 9. List the steps needed to migrate a Class to Function
