@@ -31,6 +31,9 @@ interface SearchResultsProps<T extends CountryData> extends Pick<AutoCompletePro
     shouldShowNoResults?: boolean
 }
 
+// TODO: Future Improvement - Infinite scrolling support can be added to handle cases when searched results can be a very high number
+// So to ensure that all the results don't get rendered at the same time - infinite scrolling can be used along with a paginated api
+
 function SearchResults<T extends CountryData>(props: SearchResultsProps<T>) {
 
     const { searchResults, onResultClick, searchResultCustomRenderer, overrideStyles = {}, searchQuery, shouldShowNoResults } = props

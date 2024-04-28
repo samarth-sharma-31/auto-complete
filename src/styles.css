@@ -128,3 +128,11 @@ body {
 .highlight-text {
   font-weight: 700;
 }
+
+.name-container {
+  text-align: justify;
+  width: calc(600px - 84px);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
