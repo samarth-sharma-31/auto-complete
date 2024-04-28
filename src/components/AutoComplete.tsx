@@ -85,7 +85,9 @@ export function AutoComplete<T extends CountryData>(props: AutoCompleteProps<T>)
     }, [])
 
     const handleBlur = () => {
-        // setIsPopoverOpen(false)
+        setTimeout(() => {
+            setIsPopoverOpen(false)
+        }, 300)
     }
 
     const handleFocus = () => {
@@ -99,6 +101,7 @@ export function AutoComplete<T extends CountryData>(props: AutoCompleteProps<T>)
     const shouldShowNoResults = Boolean(!searchResults?.length && selectedValue && !loadingResults)
 
     const handleInputClear = () => {
+        onSelect('')
         onQueryChange('')
         setIsPopoverOpen(false)
         setSelectedValue('')

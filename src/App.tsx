@@ -33,12 +33,12 @@ export default function App() {
   const [searchQuery, setSearchQuery] = React.useState<string>('')
 
 
-  const fetchCountries = React.useCallback(async (searchQuery: string) => {
+  const fetchCountries = React.useCallback(async (searchQueryVal: string) => {
     setLoadingResults(true)
     try{
-      const countriesResponse = await fetchResults(searchQuery)
+      const countriesResponse = await fetchResults(searchQueryVal)
       // Set the response in cache for future usages
-      SEARCH_RESULTS_CACHE[searchQuery] = countriesResponse;
+      SEARCH_RESULTS_CACHE[searchQueryVal] = countriesResponse;
       setSearchResults(countriesResponse)
     }catch (e) {
       // TODO: Add error handling suppport
@@ -69,6 +69,10 @@ export default function App() {
     }
   }, 300), [fetchCountries])
 
+  const handleCountrySelection = React.useCallback((value: string) => {
+    setCountrySelected(value)
+  }, [])
+
   const renderCountryData = (countryData: CountryData, handleClick: () => void) => {
     const { name, flags } = countryData
     const highlightedCountryName = `${name.official} (${name.common})`.replace(new RegExp(searchQuery, "gi"), (match) => `<span class="highlight-text">${match}</span>`);
@@ -86,7 +90,7 @@ export default function App() {
   return (
     <div className="app-container">
       <header className='page-heading'>Explore Countries</header>
-      <AutoComplete onSelect={(value) => setCountrySelected(value)} searchResultCustomRenderer={renderCountryData} searchResults={searchResults} loadingResults={loadingResults} onQueryChange={debouncedHandleQueryChange} />
+      <AutoComplete onSelect={handleCountrySelection} searchResultCustomRenderer={renderCountryData} searchResults={searchResults} loadingResults={loadingResults} onQueryChange={debouncedHandleQueryChange} />
       {countrySelected && <div className='selected-country'>{`Selected Country: ${countrySelected}`}</div>}
     </div>
   );
