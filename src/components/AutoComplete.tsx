@@ -61,7 +61,7 @@ export function AutoComplete<T extends CountryData>(props: AutoCompleteProps<T>)
 
     const [isPopoverOpen, setIsPopoverOpen] = React.useState(false)
 
-    const [selectedValue, setSelectedValue] = React.useState<string | undefined>(value)
+    const [selectedValue, setSelectedValue] = React.useState<string | undefined>(value || '')
 
     // overrideStyles - Allows parent component to override the styles of the auto complete component and cusomize according to the use case
     const inputStyles = {

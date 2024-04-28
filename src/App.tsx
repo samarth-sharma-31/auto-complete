@@ -74,7 +74,7 @@ export default function App() {
     const highlightedCountryName = `${name.official} (${name.common})`.replace(new RegExp(searchQuery, "gi"), (match) => `<span class="highlight-text">${match}</span>`);
 
     return(
-      <div onClick={handleClick} className={`country-item-wrapper ${countrySelected === name.official ? 'country-item-wrapper-selected' : 'country-item-wrapper-hover'}`}>
+      <div onClick={handleClick} key={name.official} className={`country-item-wrapper ${countrySelected === name.official ? 'country-item-wrapper-selected' : 'country-item-wrapper-hover'}`}>
         <div className='flag-container'>
           <img className='flag-image' src={flags.svg} alt={flags.alt} />
         </div>
